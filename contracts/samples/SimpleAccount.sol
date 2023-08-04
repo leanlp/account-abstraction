@@ -22,8 +22,8 @@ contract SimpleAccount is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, In
     using ECDSA for bytes32;
 
     address public owner;
-    address public owner_2;
-    address public owner_3;
+    address public ownerAddress2;
+    address public ownerAddress3;
 
 
     IEntryPoint private immutable _entryPoint;
@@ -50,9 +50,8 @@ contract SimpleAccount is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, In
     }
 
     function _onlyOwner() internal view {
-        //directly from EOA owner, or through the account itself (which gets redirected through execute())
-        require(msg.sender == owner || msg.sender == address(this), "only owner");
-    }
+    require(msg.sender == owner || msg.sender == address(this) || msg.sender == ownerAddress2 || msg.sender == ownerAddress3, "only owner");
+}
 
     /**
      * execute a transaction (called directly from owner, or by entryPoint)
