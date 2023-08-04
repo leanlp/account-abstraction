@@ -22,6 +22,9 @@ contract SimpleAccount is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, In
     using ECDSA for bytes32;
 
     address public owner;
+    address public owner_2;
+    address public owner_3;
+
 
     IEntryPoint private immutable _entryPoint;
 
